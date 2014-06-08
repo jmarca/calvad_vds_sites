@@ -3,7 +3,7 @@
 // test that I can check for imputed, not imputed
 
 var should = require('should')
-var queue = require("queue-async")
+//var queue = require("queue-async")
 
 var is_not_imputed = require('../lib/query_couchdb').is_not_imputed
 var config_okay = require('config_okay')
@@ -62,7 +62,8 @@ describe('is_not_imputed',function(){
                task.statedb = c.couchdb.db
                is_not_imputed(task,function(e,r){
                    should.not.exist(e)
-                   should.not.exist(r)
+                   should.exist(r)
+                   r.should.eql(task)
                    return done()
                })
            })
