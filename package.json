@@ -23,7 +23,8 @@
     "should": ""
   },
   "dependencies": {
-      "couchdb_get_views":"jmarca/couchdb_get_views",
-      "config_okay":""
+    "couchdb_get_views": "jmarca/couchdb_get_views",
+    "config_okay": "",
+    "couch_check_state": "git://github.com/jmarca/couch_check_state"
   }
 }
