@@ -2,7 +2,9 @@
 
 var should = require('should')
 
-var get_vds_need_raw_imputing = require('../lib/query_couchdb').get_vds_need_raw_imputing
+var q_c = require('../lib/query_couchdb')
+var get_vds_need_raw_imputing = q_c.get_vds_need_raw_imputing
+var get_vds_done_raw_imputing = q_c.get_vds_done_raw_imputing
 var config_okay = require('config_okay')
 
 var path    = require('path')
@@ -29,6 +31,26 @@ describe('get sites',function(){
                                       should.not.exist(e)
                                       should.exist(r)
                                       r.should.have.property('rows').with.lengthOf(519)
+                                      return done()
+                                  })
+    })
+    it('should get all the vds sites that need imputing',function(done){
+        get_vds_done_raw_imputing({'year':2010
+                                  ,'config_file':config_file}
+                                 ,function(e,r){
+                                      should.not.exist(e)
+                                      should.exist(r)
+                                      r.should.have.property('rows').with.lengthOf(494)
+                                      return done()
+                                  })
+    })
+    it('should get all the vds sites that need imputing',function(done){
+        get_vds_done_raw_imputing({'year':2014
+                                  ,'config_file':config_file}
+                                 ,function(e,r){
+                                      should.not.exist(e)
+                                      should.exist(r)
+                                      r.should.have.property('rows').with.lengthOf(0)
                                       return done()
                                   })
     })
