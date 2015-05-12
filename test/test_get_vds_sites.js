@@ -9,15 +9,25 @@ var config_okay = require('config_okay')
 
 var path    = require('path')
 var rootdir = path.normalize(__dirname)
-var config_file = rootdir+'/../test.config.json'
+var config_file = path.normalize(rootdir+'/../test.config.json')
 var config={}
 
+before(function(done){
+
+    config_okay(config_file,function(e,c){
+
+        config = c
+        return done()
+    })
+    return null
+
+})
 
 describe('get sites',function(){
     it('should get all the vds sites that need imputing',function(done){
         get_vds_need_raw_imputing({'year':2010
-                                  ,'config_file':config_file}
-                                 ,function(e,r){
+                                   ,'couchdb':config.couchdb}
+                                  ,function(e,r){
                                       should.not.exist(e)
                                       should.exist(r)
                                       r.should.have.property('rows').with.lengthOf(8)
@@ -26,8 +36,8 @@ describe('get sites',function(){
     })
     it('should get all the vds sites that need imputing',function(done){
         get_vds_need_raw_imputing({'year':2014
-                                  ,'config_file':config_file}
-                                 ,function(e,r){
+                                   ,'couchdb':config.couchdb}
+                                  ,function(e,r){
                                       should.not.exist(e)
                                       should.exist(r)
                                       r.should.have.property('rows').with.lengthOf(519)
@@ -36,8 +46,8 @@ describe('get sites',function(){
     })
     it('should get all the vds sites that need imputing',function(done){
         get_vds_done_raw_imputing({'year':2010
-                                  ,'config_file':config_file}
-                                 ,function(e,r){
+                                   ,'couchdb':config.couchdb}
+                                  ,function(e,r){
                                       should.not.exist(e)
                                       should.exist(r)
                                       r.should.have.property('rows').with.lengthOf(494)
@@ -46,8 +56,8 @@ describe('get sites',function(){
     })
     it('should get all the vds sites that need imputing',function(done){
         get_vds_done_raw_imputing({'year':2014
-                                  ,'config_file':config_file}
-                                 ,function(e,r){
+                                   ,'couchdb':config.couchdb}
+                                  ,function(e,r){
                                       should.not.exist(e)
                                       should.exist(r)
                                       r.should.have.property('rows').with.lengthOf(0)

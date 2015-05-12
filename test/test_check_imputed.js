@@ -23,8 +23,7 @@ describe('is_not_imputed',function(){
                       }
            config_okay(config_file,function(err,c){
                if(!c.couchdb.db){ throw new Error('need valid db defined in test.config.json')}
-               task.config = c
-               task.statedb = c.couchdb.db
+               task.couchdb = c.couchdb
                is_not_imputed(task,function(e,r){
                    should.not.exist(e)
                    should.not.exist(r)
@@ -40,8 +39,7 @@ describe('is_not_imputed',function(){
                       }
            config_okay(config_file,function(err,c){
                if(!c.couchdb.db){ throw new Error('need valid db defined in test.config.json')}
-               task.config = c
-               task.statedb = c.couchdb.db
+               task.couchdb = c.couchdb
                is_not_imputed(task,function(e,r){
                    should.not.exist(e)
                    should.not.exist(r)
@@ -58,8 +56,7 @@ describe('is_not_imputed',function(){
                       }
            config_okay(config_file,function(err,c){
                if(!c.couchdb.db){ throw new Error('need valid db defined in test.config.json')}
-               task.config = c
-               task.statedb = c.couchdb.db
+               task.couchdb = c.couchdb
                is_not_imputed(task,function(e,r){
                    should.not.exist(e)
                    should.exist(r)
