@@ -44,7 +44,7 @@ describe('get sites',function(){
                                       return done()
                                   })
     })
-    it('should get all the vds sites that need imputing',function(done){
+    it('should get all the vds sites that done imputing',function(done){
         get_vds_done_raw_imputing({'year':2010
                                    ,'couchdb':config.couchdb}
                                   ,function(e,r){
@@ -54,13 +54,28 @@ describe('get sites',function(){
                                       return done()
                                   })
     })
-    it('should get all the vds sites that need imputing',function(done){
+    it('should get all the vds sites that done imputing',function(done){
         get_vds_done_raw_imputing({'year':2014
                                    ,'couchdb':config.couchdb}
                                   ,function(e,r){
                                       should.not.exist(e)
                                       should.exist(r)
                                       r.should.have.property('rows').with.lengthOf(0)
+                                      return done()
+                                  })
+    })
+    it('should get all the vds sites truck imputing status',function(done){
+        get_vds_done_raw_imputing({'year':2014
+                                   ,'couchdb':config.couchdb}
+                                  ,function(e,r){
+                                      should.not.exist(e)
+                                      should.exist(r)
+                                      r.should.have.property('rows').with.lengthOf(519)
+                                      r.rows.forEach(function(row){
+                                          row.should.have.property('key').with.lengthOf(3)
+                                          row.key[1].should.eql('unprocessed')
+                                          return null
+                                      })
                                       return done()
                                   })
     })
