@@ -6,3 +6,4 @@ var q_c = require('./lib/query_couchdb')
 exports.is_not_imputed = q_c.is_not_imputed
 exports.get_vds_need_raw_imputing=q_c.get_vds_need_raw_imputing
 exports.get_vds_done_raw_imputing=q_c.get_vds_done_raw_imputing
+exports.get_vds_status_truckimputation = q_c.get_vds_status_truckimputation_imputing
