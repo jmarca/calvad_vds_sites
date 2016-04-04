@@ -49,7 +49,7 @@ describe('get vds files local',function(){
                      ,function(err,list){
                          should.not.exist(err)
                          //console.log(list)
-                         list.should.have.property('length',8)
+                         list.should.have.property('length',9)
                          list.forEach(function(f){
                              f.should.match(/\.txt\.?.z$/);
                              return null
@@ -69,7 +69,7 @@ describe('get vds files local',function(){
                      ,function(err,list){
                          should.not.exist(err)
                          //console.log(list)
-                         list.should.have.property('length',8)
+                         list.should.have.property('length',9)
                          list.forEach(function(f){
                              f.should.match(new RegExp(yr+'.*\.RData$'));
                              return null
@@ -89,7 +89,7 @@ describe('get vds files local',function(){
                       ,function(err,list){
                           should.not.exist(err)
                           //console.log(list)
-                          list.should.have.property('length',8)
+                          list.should.have.property('length',9)
                           list.forEach(function(f){
                               f.should.match(new RegExp(yr+'.*\.RData$'));
                               return null
