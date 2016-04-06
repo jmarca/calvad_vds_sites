@@ -27,3 +27,8 @@ For example, do
 npm install jmarca/couchdb_put_view
 node node_modules/couchdb_put_view/put_view.js -c myconfig.json -v myview.json
 ```
+
+# API note
+
+At the moment (April, 2016) the code has been modified to look for
+*all* detector types. If you want fewer, ask for fewer.
